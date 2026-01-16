@@ -1,0 +1,44 @@
+name: Fetch Weather Data
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  fetch-weather:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch existing CSV
+        run: |
+          # Download existing CSV if it exists
+          if [ -f "weather_data.csv" ]; then
+            echo "Existing CSV found in repository"
+          else
+            echo "No existing CSV, will create new one"
+          fi
+
+      - name: Run weather fetch script
+        env:
+          WEATHER_API_KEY: ${{ secrets.APPID }}
+          WEATHER_LAT: '16.0544'
+          WEATHER_LON: '108.2022'
+        run: python fetch_weather.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add *.csv
+          git diff --staged --quiet || git commit -m "Update weather data - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push

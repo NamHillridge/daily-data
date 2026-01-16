@@ -1,5 +1,8 @@
 name: Fetch Weather Data
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # Run every day at 00:00 UTC

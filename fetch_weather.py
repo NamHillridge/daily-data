@@ -95,9 +95,6 @@ def main():
     # Construct API URL
     if api_key:
         api_url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
-    else:
-        # Fallback to hardcoded URL (for local testing)
-        api_url = 'https://api.openweathermap.org/data/2.5/weather?lat=16.0544&lon=108.2022&appid=d16c000ae5dc1648b49213b3311a43dd'
 
     # Fetch weather data
     print("Fetching weather data...")

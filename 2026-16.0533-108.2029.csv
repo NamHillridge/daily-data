@@ -1,0 +1,2 @@
+timestamp,api_timestamp,city_id,city_name,country,lat,lon,timezone,weather_id,weather_main,weather_description,temp,feels_like,temp_min,temp_max,pressure,humidity,sea_level_pressure,grnd_level_pressure,visibility,wind_speed,wind_direction,clouds_all,sunrise,sunset
+2026-01-25T06:24:46.918104,1769321997,1594018,Ap Ba,VN,16.0533,108.2029,25200,803,Clouds,broken clouds,298.15,298.3,298.15,298.15,1017,61,1017,1003,10000,3.6,120,75,1769296704,1769337606
